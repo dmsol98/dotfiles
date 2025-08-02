@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Use kickstart if nvim is installed and the config exists
+if command -v nvim >/dev/null && [ -d "$HOME/.config/nvim-kickstart" ]; then
+    NVIM_APPNAME=nvim-kickstart exec nvim "$@"
+else
+    exec vi "$@"
+fi
