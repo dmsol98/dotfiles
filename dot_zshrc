@@ -1,0 +1,96 @@
+# --------------------------------------------------------------------------------
+# PATH MODIFICATIONS
+# --------------------------------------------------------------------------------
+
+# # Add to $PATH safely without repetition
+# if ! [[ ":$PATH:" == *":$HOME/<my/path/here>:"* ]]; then
+#     PATH="$HOME/<my/path/here>:$PATH"
+# fi
+
+# Add homebrew to $PATH
+if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+export PATH
+
+
+# --------------------------------------------------------------------------------
+# EXPORT CUSTOM VARIABLES
+# --------------------------------------------------------------------------------
+
+export EDITOR="$HOME/.local/bin/custom-editor"
+
+
+# --------------------------------------------------------------------------------
+# ZINIT CONFIGURATION
+# --------------------------------------------------------------------------------
+
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Load completions
+autoload -U compinit && compinit
+
+# Keybindings
+bindkey -e # EMACS default keybinds
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+# # Path to your Oh My Zsh installation.
+# export ZSH="$HOME/.oh-my-zsh"
+#
+# export LS_COLORS="$(vivid generate catppuccin-mocha)"
+# # plugins=(git)
+#
+# source $ZSH/oh-my-zsh.sh
+
+
+# --------------------------------------------------------------------------------
+# SHELL INTEGRATIONS
+# --------------------------------------------------------------------------------
+
+eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
+
+
+# --------------------------------------------------------------------------------
+# USER SPECIFIC ALIASES AND FUNCTIONS
+# --------------------------------------------------------------------------------
+
+alias la="ls -la"
+alias path="echo -e ${PATH//:/\\n}"
+alias nv="NVIM_APPNAME=nvim nvim"
+alias nk="NVIM_APPNAME=nvim-kickstart nvim"
+
