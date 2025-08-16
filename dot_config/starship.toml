@@ -11,27 +11,23 @@ $git_branch\
 $git_status\
 [❯](fg:rosewater)\
 $c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
+$cpp\
 $python\
 [❯](fg:rosewater)\
 $conda\
-$time\
-[❯](fg:rosewater)\
-$cmd_duration\
+$docker_context\
 $line_break\
 $character"""
+
+right_format = """
+$time\
+$cmd_duration"""
 
 palette = 'catppuccin_mocha'
 
 [os]
 disabled = false
-style = "fg:mauve"
+style = "fg:flamingo"
 
 [os.symbols]
 Windows = ""
@@ -56,14 +52,14 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "fg:mauve"
-style_root = "fg:mauve"
+style_user = "fg:flamingo"
+style_root = "fg:flamingo"
 format = '[ $user ]($style)'
 
 [directory]
 style = "fg:sky"
 format = "[ $path ]($style)"
-truncation_length = 4
+truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -82,43 +78,13 @@ format = '[[ $symbol $branch ](fg:yellow)]($style)'
 style = "fg:yellow"
 format = '[[($all_status$ahead_behind )](fg:yellow)]($style)'
 
-[nodejs]
-symbol = ""
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
 [c]
 symbol = " "
 style = "fg:green"
 format = '[[ $symbol( $version) ](fg:green)]($style)'
 
-[rust]
-symbol = ""
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
-[golang]
-symbol = ""
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
-[php]
-symbol = ""
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
-[java]
-symbol = " "
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
-[kotlin]
-symbol = ""
-style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
-
-[haskell]
-symbol = ""
+[cpp]
+symbol = " ++"
 style = "fg:green"
 format = '[[ $symbol( $version) ](fg:green)]($style)'
 
@@ -145,7 +111,7 @@ style = "fg:lavender"
 format = '[[  $time ](fg:lavender)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
 disabled = false
@@ -158,7 +124,7 @@ vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = true
-format = "  in $duration "
+format = " in $duration "
 style = "bg:lavender"
 disabled = false
 show_notifications = true
