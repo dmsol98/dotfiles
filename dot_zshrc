@@ -1,11 +1,16 @@
 # --------------------------------------------------------------------------------
-# PATH MODIFICATIONS
+# HELPFUL TOOLS
 # --------------------------------------------------------------------------------
 
-# # Add to $PATH safely without repetition
+# Add a directory to $PATH safely without repetition
 # if ! [[ ":$PATH:" == *":$HOME/<my/path/here>:"* ]]; then
 #     PATH="$HOME/<my/path/here>:$PATH"
 # fi
+
+
+# --------------------------------------------------------------------------------
+# PATH MODIFICATIONS
+# --------------------------------------------------------------------------------
 
 # Add homebrew to $PATH
 if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
@@ -13,6 +18,9 @@ if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
 fi
 
 export PATH
+
+# If $PATH contains duplicate paths, remove them with this line of code
+export PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)
 
 
 # --------------------------------------------------------------------------------
@@ -68,14 +76,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-# # Path to your Oh My Zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
-#
-# export LS_COLORS="$(vivid generate catppuccin-mocha)"
-# # plugins=(git)
-#
-# source $ZSH/oh-my-zsh.sh
-
 
 # --------------------------------------------------------------------------------
 # SHELL INTEGRATIONS
@@ -90,7 +90,7 @@ eval "$(fzf --zsh)"
 # --------------------------------------------------------------------------------
 
 alias la="ls -la --color"
-alias path="echo -e ${PATH//:/\\n}"
+alias path="echo \"$PATH\" | tr ':' '\n'"
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
 
