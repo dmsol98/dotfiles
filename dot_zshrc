@@ -89,7 +89,7 @@ eval "$(fzf --zsh)"
 # USER SPECIFIC ALIASES AND FUNCTIONS
 # --------------------------------------------------------------------------------
 
-alias la="ls -la"
+alias la="ls -la --color"
 alias path="echo -e ${PATH//:/\\n}"
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
