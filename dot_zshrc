@@ -17,6 +17,10 @@ if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if ! [[ ":$PATH:" == *":$HOME/.local/bin:"* ]]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 export PATH
 
 # If $PATH contains duplicate paths, remove them with this line of code
