@@ -1,9 +1,12 @@
 # Modified from https://starship.rs/presets/catppuccin-powerline
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = 'catppuccin_mocha'
+
 format = """
 $os\
 $username\
+$hostname\
 [❯](fg:rosewater)\
 $directory\
 [❯](fg:rosewater)\
@@ -16,18 +19,14 @@ $python\
 [❯](fg:rosewater)\
 $conda\
 $docker_context\
+[❯](fg:rosewater)\
+$time\
 $line_break\
 $character"""
 
-right_format = """
-$time\
-$cmd_duration"""
-
-palette = 'catppuccin_mocha'
-
 [os]
 disabled = false
-style = "fg:flamingo"
+style = "fg:maroon"
 
 [os.symbols]
 Windows = ""
@@ -52,9 +51,14 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "fg:flamingo"
-style_root = "fg:flamingo"
-format = '[ $user ]($style)'
+style_user = "fg:maroon"
+style_root = "fg:maroon"
+format = '[ $user]($style)'
+
+[hostname]
+ssh_only = false
+style = "fg:maroon"
+format = '[@$hostname ]($style)'
 
 [directory]
 style = "fg:sky"
@@ -107,8 +111,8 @@ ignore_base = false
 [time]
 disabled = false
 time_format = "%R"
-style = "fg:lavender"
-format = '[[  $time ](fg:lavender)]($style)'
+style = "fg:mauve"
+format = '[[  $time ](fg:mauve)]($style)'
 
 [line_break]
 disabled = false
