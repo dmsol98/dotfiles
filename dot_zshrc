@@ -93,8 +93,9 @@ eval "$(fzf --zsh)"
 # USER SPECIFIC ALIASES AND FUNCTIONS
 # --------------------------------------------------------------------------------
 
+# Terminal navigation
 alias la="ls -la --color"
 alias path="echo \"$PATH\" | tr ':' '\n'"
+# NeoVim configs
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
-
