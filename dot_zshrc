@@ -94,7 +94,7 @@ eval "$(fzf --zsh)"
 # --------------------------------------------------------------------------------
 
 # Terminal navigation
-alias la="ls -la --color"
+alias la="ls -lah --color=auto --group-directories-first"
 alias path="echo \"$PATH\" | tr ':' '\n'"
 # NeoVim configs
 alias nv="NVIM_APPNAME=nvim nvim"
