@@ -1,0 +1,4 @@
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
