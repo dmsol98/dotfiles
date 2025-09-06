@@ -1,0 +1,40 @@
+# Shell to launch by default
+[terminal.shell]
+program = "wsl.exe"
+args = ["~"] # Start in Linux home directory
+
+# Font settings
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+
+# Window appearance
+[window]
+opacity = 0.80
+
+[window.padding]
+x = 5
+y = 5
+
+
+# Colorscheme
+[colors.primary]
+background = "#11111b"
+foreground = "#cdd6f4"
+
+
+# Keyboard settings to work with tmux prefix <Ctrl+Space>
+[[keyboard.bindings]]
+key = "Space"
+mods = "Control"
+chars = "\u0000"
+
+[[keyboard.bindings]]
+key = "NumpadEnter"
+chars = "\r"
+
