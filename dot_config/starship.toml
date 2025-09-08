@@ -4,23 +4,21 @@
 palette = 'catppuccin_mocha'
 
 format = """
+$time\
+[❯ ](fg:rosewater)\
 $os\
 $username\
 $hostname\
 [❯](fg:rosewater)\
 $directory\
-[❯](fg:rosewater)\
 $git_branch\
 $git_status\
-[❯](fg:rosewater)\
 $c\
 $cpp\
 $python\
 [❯](fg:rosewater)\
 $conda\
 $docker_context\
-[❯](fg:rosewater)\
-$time\
 $line_break\
 $character"""
 
@@ -58,12 +56,12 @@ format = '[ $user]($style)'
 [hostname]
 ssh_only = false
 style = "fg:maroon"
-format = '[@$hostname ]($style)'
+format = '[@$hostname]($style)'
 
 [directory]
 style = "fg:sky"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -76,7 +74,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "fg:yellow"
-format = '[[ $symbol $branch ](fg:yellow)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol $branch ](fg:yellow)]($style)'
 
 [git_status]
 style = "fg:yellow"
@@ -85,34 +83,35 @@ format = '[[($all_status$ahead_behind )](fg:yellow)]($style)'
 [c]
 symbol = " "
 style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 
 [cpp]
 symbol = " ++"
 style = "fg:green"
-format = '[[ $symbol( $version) ](fg:green)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 
 [python]
 symbol = ""
 style = "fg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green)]($style)'
 
 [docker_context]
 symbol = ""
 style = "fg:sapphire"
-format = '[[ $symbol( $context) ](fg:sapphire)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol( $context) ](fg:sapphire)]($style)'
 
 [conda]
 symbol = "  "
 style = "fg:sapphire"
-format = '[$symbol$environment ]($style)'
+format = '[❯](fg:rosewater)[$symbol$environment ]($style)'
 ignore_base = false
 
 [time]
 disabled = false
+# symbol = "  "
 time_format = "%R"
 style = "fg:mauve"
-format = '[[  $time ](fg:mauve)]($style)'
+format = '[[$time ](fg:mauve)]($style)'
 
 [line_break]
 disabled = false
