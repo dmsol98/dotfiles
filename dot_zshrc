@@ -97,3 +97,5 @@ alias path="echo \"$PATH\" | tr ':' '\n'"
 # NeoVim configs
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
+# Git shortcuts
+alias gitlog="git log --all --graph --decorate --abbrev-commit --pretty=oneline"
