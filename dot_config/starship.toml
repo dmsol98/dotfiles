@@ -15,7 +15,9 @@ $git_branch\
 $git_status\
 $c\
 $cpp\
+$cmake\
 $python\
+$lua\
 [❯](fg:rosewater)\
 $conda\
 $docker_context\
@@ -87,6 +89,13 @@ format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 
 [cpp]
 symbol = " ++"
+disabled = false
+style = "fg:green"
+format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+
+[cmake]
+symbol = "△"
+disabled = false
 style = "fg:green"
 format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 
@@ -94,6 +103,11 @@ format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 symbol = ""
 style = "fg:green"
 format = '[❯](fg:rosewater)[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green)]($style)'
+
+[lua]
+symbol = "🌙 "
+style = "fg:green"
+format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 
 [docker_context]
 symbol = ""
