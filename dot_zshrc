@@ -98,4 +98,5 @@ alias path="echo \"$PATH\" | tr ':' '\n'"
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
 # Git shortcuts
-alias gitlog="git log --all --graph --decorate --abbrev-commit --pretty=oneline"
+alias gl1="git log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
