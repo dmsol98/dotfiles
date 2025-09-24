@@ -10,7 +10,7 @@ WIN_APPDATA_LINUX=$(wslpath "$WIN_APPDATA")
 
 # Alacritty config folder inside Windows
 ALACRITTY_WIN_DIR="$WIN_APPDATA_LINUX/alacritty"
-mkdir -p "$ALACRITTY_WIN_DIR/themes"
+mkdir -p "$ALACRITTY_WIN_DIR"
 
 # Source config folders
 WSL_CONFIG_DIR="$HOME/.config/alacritty"
@@ -19,11 +19,10 @@ SRC_WIN="$WSL_CONFIG_DIR/os/windows.toml"
 THEMES_DIR="$WSL_CONFIG_DIR/themes"
 
 # Destination config files
-DST_BASE="$ALACRITTY_WIN_DIR/alacritty.base.toml"
-DST_WIN="$ALACRITTY_WIN_DIR/os.windows.toml"
-
-# Destination main config
 DST_MAIN="$ALACRITTY_WIN_DIR/alacritty.toml"
+DST_BASE="$ALACRITTY_WIN_DIR/alacritty.base.toml"
+DST_WIN="$ALACRITTY_WIN_DIR/alacritty.os-windows.toml"
+DST_THEME="$ALACRITTY_WIN_DIR/alacritty.colorscheme.toml"
 
 # If main config exists, confirm overwrite
 if [ -f "$DST_MAIN" ]; then
@@ -50,13 +49,10 @@ fi
 
 SELECTED_THEME="${themes[$((theme_index - 1))]}"
 SRC_THEME="$THEMES_DIR/$SELECTED_THEME"
-DST_THEME="$ALACRITTY_WIN_DIR/themes/$SELECTED_THEME"
 
-# Copy base and OS-specific configs
+# Copy configs
 cp "$SRC_BASE" "$DST_BASE"
 cp "$SRC_WIN" "$DST_WIN"
-
-# Copy selected theme
 cp "$SRC_THEME" "$DST_THEME"
 
 # Write main config with imports
@@ -64,8 +60,8 @@ cat > "$DST_MAIN" <<EOF
 [general]
 import = [
   "alacritty.base.toml",
-  "os.windows.toml",
-  "themes/$SELECTED_THEME"
+  "alacritty.os-windows.toml",
+  "alacritty.colorscheme.toml"
 ]
 EOF
 
