@@ -1,16 +1,13 @@
+# .zshrc
+
 # --------------------------------------------------------------------------------
-# HELPFUL TOOLS
+# PATH MODIFICATIONS
 # --------------------------------------------------------------------------------
 
 # Add a directory to $PATH safely without repetition
 # if ! [[ ":$PATH:" == *":$HOME/<my/path/here>:"* ]]; then
 #     PATH="$HOME/<my/path/here>:$PATH"
 # fi
-
-
-# --------------------------------------------------------------------------------
-# PATH MODIFICATIONS
-# --------------------------------------------------------------------------------
 
 # Add homebrew to $PATH
 if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
@@ -77,8 +74,9 @@ setopt hist_save_no_dups
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color --group-directories-first $realpath'
 
 
 # --------------------------------------------------------------------------------
@@ -99,3 +97,6 @@ alias path="echo \"$PATH\" | tr ':' '\n'"
 # NeoVim configs
 alias nv="NVIM_APPNAME=nvim nvim"
 alias nk="NVIM_APPNAME=nvim-kickstart nvim"
+# Git shortcuts
+alias gl1="git log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
