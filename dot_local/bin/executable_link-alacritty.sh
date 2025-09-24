@@ -15,15 +15,13 @@ mkdir -p "$ALACRITTY_WIN_DIR"
 # Source configs inside WSL
 WSL_CONFIG_DIR="$HOME/.config/alacritty"
 SRC_BASE="$WSL_CONFIG_DIR/alacritty.toml"
+SRC_CLR="$WSL_CONFIG_DIR/colorscheme.toml"
 SRC_WIN="$WSL_CONFIG_DIR/os/windows.toml"
 
 # Destination "cached" configs in Windows
 DST_BASE="$ALACRITTY_WIN_DIR/alacritty.base.toml"
+DST_CLR="$ALACRITTY_WIN_DIR/alacritty.colorscheme.toml"
 DST_WIN="$ALACRITTY_WIN_DIR/os.windows.toml"
-
-# Copy WSL configs into Windows (always refresh these)
-cp "$SRC_BASE" "$DST_BASE"
-cp "$SRC_WIN" "$DST_WIN"
 
 # Destination main config in Windows
 DST_MAIN="$ALACRITTY_WIN_DIR/alacritty.toml"
@@ -38,11 +36,17 @@ if [ -f "$DST_MAIN" ]; then
     fi
 fi
 
+# Copy WSL configs into Windows (always refresh these)
+cp "$SRC_BASE" "$DST_BASE"
+cp "$SRC_CLR" "$DST_CLR"
+cp "$SRC_WIN" "$DST_WIN"
+
 # Write main Windows config with local imports
 cat > "$DST_MAIN" <<EOF
 [general]
 import = [
   "alacritty.base.toml",
+  "alacritty.colorscheme.toml",
   "os.windows.toml"
 ]
 EOF

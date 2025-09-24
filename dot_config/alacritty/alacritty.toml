@@ -29,10 +29,11 @@ chars = "\u0000"
 key = "NumpadEnter"
 chars = "\r"
 
-# Shared config
+# Shared config and colortheme
 [general]
 import = [
   "os/linux.toml",
   "os/windows.toml",
+  "colorscheme.toml",
 ]
 
