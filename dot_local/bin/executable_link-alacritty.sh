@@ -22,9 +22,18 @@ THEMES_DIR="$WSL_CONFIG_DIR/themes"
 DST_BASE="$ALACRITTY_WIN_DIR/alacritty.base.toml"
 DST_WIN="$ALACRITTY_WIN_DIR/os.windows.toml"
 
-# Copy base and OS-specific configs
-cp "$SRC_BASE" "$DST_BASE"
-cp "$SRC_WIN" "$DST_WIN"
+# Destination main config
+DST_MAIN="$ALACRITTY_WIN_DIR/alacritty.toml"
+
+# If main config exists, confirm overwrite
+if [ -f "$DST_MAIN" ]; then
+    echo "⚠️  $DST_MAIN already exists."
+    read -rp "Do you want to overwrite it? [y/N]: " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        echo "❌ Aborted. Existing alacritty.toml preserved."
+        exit 0
+    fi
+fi
 
 # --- Theme Selection ---
 echo "🎨 Available themes:"
@@ -43,21 +52,12 @@ SELECTED_THEME="${themes[$((theme_index - 1))]}"
 SRC_THEME="$THEMES_DIR/$SELECTED_THEME"
 DST_THEME="$ALACRITTY_WIN_DIR/themes/$SELECTED_THEME"
 
+# Copy base and OS-specific configs
+cp "$SRC_BASE" "$DST_BASE"
+cp "$SRC_WIN" "$DST_WIN"
+
 # Copy selected theme
 cp "$SRC_THEME" "$DST_THEME"
-
-# Destination main config
-DST_MAIN="$ALACRITTY_WIN_DIR/alacritty.toml"
-
-# If main config exists, confirm overwrite
-if [ -f "$DST_MAIN" ]; then
-    echo "⚠️  $DST_MAIN already exists."
-    read -rp "Do you want to overwrite it? [y/N]: " confirm
-    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-        echo "❌ Aborted. Existing alacritty.toml preserved."
-        exit 0
-    fi
-fi
 
 # Write main config with imports
 cat > "$DST_MAIN" <<EOF
