@@ -14,11 +14,6 @@ opacity = 0.80
 x = 5
 y = 5
 
-# Colorscheme
-[colors.primary]
-background = "#11111b"
-foreground = "#cdd6f4"
-
 # Keyboard settings to work with tmux prefix <Ctrl+Space>
 [[keyboard.bindings]]
 key = "Space"
@@ -36,4 +31,3 @@ import = [
   "os/windows.toml",
   "themes/catppuccin_mocha.toml"
 ]
-
