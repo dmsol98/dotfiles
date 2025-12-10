@@ -57,7 +57,7 @@ format = '[ $user]($style)'
 [hostname]
 ssh_only = false
 style = "fg:maroon"
-format = '[@$hostname]($style)'
+format = '[@$hostname ]($style)'
 
 [directory]
 style = "fg:sky"
