@@ -1,4 +1,4 @@
 [terminal.shell]
-program = "wsl.exe"
-args = ["~"]
+program = "powershell.exe"
+args = ["-NoExit", "-Command", "cd ~"]
 
