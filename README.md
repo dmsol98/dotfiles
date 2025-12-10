@@ -2,11 +2,15 @@
 
 Make sure you have homebrew installed. Paste the following code into a Linux shell prompt.
 
-```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 With Homebrew, you can install many tools that will be used in the development environment we want to work with. A good list to get started with includes the following installations.
 
-```brew install chezmoi fzf gcc neovim tree-sitter```
+```bash
+brew install chezmoi zsh fzf gcc neovim tree-sitter starship tmux
+```
 
 # Chezmoi
 
@@ -14,20 +18,40 @@ Chezmoi is a dotfile manager that works with GitHub (or other version control sy
 
 Clone dotfiles from GitHub into the source directory, then update the the dotfiles on your home directory (local machine).
 
-```chezmoi init --apply https://github.com/diegosol127/dotfiles```
+```bash
+chezmoi init --apply https://github.com/diegosol127/dotfiles
+```
 
 Add a file to the source repository. If it already exists, the source state is replaced with the current state of the file in the home (destination) directory.
 
-```chezmoi add <file>```
+```bash
+chezmoi add <file>
+```
 
 Edit a dotfile directly in the source directory. Add the flag, ```--apply```, to immediately apply the changes to the home directory (local machine).
 
-```chezmoi edit <file>```
+```bash
+chezmoi edit <file>
+```
 
 Pull the latest changes from the remote repository and see what would change, without actually applyng the changes.
 
-```chezmoi git pull -- --autostash --rebase && chezmoi diff```
+```bash
+chezmoi git pull -- --autostash --rebase && chezmoi diff
+```
 
 If you're happy with the changes, apply them.
 
-```chezmoi apply```
+```bash
+chezmoi apply
+```
+
+# Zsh
+
+Once zsh has been installed and is on the system path, make it the default shell.
+
+```bash
+echo /home/linuxbrew/.linuxbrew/bin/zsh | sudo tee -a /etc/shells
+chsh -s $(which zsh)
+```
+
