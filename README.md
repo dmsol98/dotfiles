@@ -9,12 +9,12 @@ Make sure you have homebrew installed. Paste the following code into a Linux she
 With Homebrew, you can install many tools that will be used in the development environment we want to work with. A good list to get started with includes the following installations.
 
 ```bash
-brew install chezmoi zsh fzf gcc neovim tree-sitter starship tmux docker
+brew install chezmoi zsh fzf gcc neovim starship tmux
 ```
 
 # Chezmoi
 
-Chezmoi is a dotfile manager that works with GitHub (or other version control systems) under the hood. It uses a *source directory*, `~/.local/share/chezmoi`, as the clone of your dotfiles repo. For more information, visit the [Chezmoi User Guide]{https://www.chezmoi.io/user-guide/command-overview/}. To get set up, first make sure you have Chezmoi installed (use the above Homebrew installation command).
+Chezmoi is a dotfile manager that works with GitHub (or other version control systems) under the hood. It uses a *source directory*, `~/.local/share/chezmoi`, as the clone of your dotfiles repo. For more information, visit the [Chezmoi User Guide](https://www.chezmoi.io/user-guide/command-overview/). To get set up, first make sure you have Chezmoi installed (use the above Homebrew installation command).
 
 Clone dotfiles from GitHub into the source directory, then update the the dotfiles on your home directory (local machine).
 
