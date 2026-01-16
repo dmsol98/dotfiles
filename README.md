@@ -9,7 +9,7 @@ Make sure you have homebrew installed. Paste the following code into a Linux she
 With Homebrew, you can install many tools that will be used in the development environment we want to work with. A good list to get started with includes the following installations.
 
 ```bash
-brew install chezmoi zsh fzf gcc neovim tree-sitter starship tmux lua-language-server
+brew install chezmoi zsh fzf gcc neovim starship tmux
 ```
 
 # Chezmoi
