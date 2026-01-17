@@ -28,7 +28,12 @@ export PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)
 # EXPORT CUSTOM VARIABLES
 # --------------------------------------------------------------------------------
 
+# Use custom editor (nvim)
 export EDITOR="$HOME/.local/bin/custom-editor"
+
+# Fix wrong ls --colors in other-writable directories
+eval "$(dircolors -b)"
+export LS_COLORS="${LS_COLORS}:ow=34:tw=34"
 
 
 # --------------------------------------------------------------------------------
