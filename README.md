@@ -34,6 +34,11 @@ Edit a dotfile directly in the source directory. Add the flag, ```--apply```, to
 chezmoi edit <file>
 ```
 
+To pull remote changes and immediately apply them locally.
+```bash
+chezmoi update
+```
+
 Pull the latest changes from the remote repository and see what would change, without actually applyng the changes.
 
 ```bash
@@ -55,3 +60,30 @@ echo /home/linuxbrew/.linuxbrew/bin/zsh | sudo tee -a /etc/shells
 chsh -s $(which zsh)
 ```
 
+# Tmux
+
+The `prefix` key for this configuration is `Ctrl-Space`. Below are some useful commands to remember.
+
+Source tmux configuration.
+
+```bash
+prefix + R
+```
+
+Source zsh configuration in current pane.
+
+```bash
+prefix + r
+```
+
+Save tmux environment.
+
+```bash
+prefix + Ctrl-s
+```
+
+Restore tmux environment.
+
+```bash
+prefix + Ctrl-r
+```
