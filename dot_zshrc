@@ -62,7 +62,7 @@ zinit light Aloxaf/fzf-tab
 autoload -U compinit && compinit
 
 # Keybindings
-bindkey -v # Vim bindings
+bindkey -e # EMACS default bindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
