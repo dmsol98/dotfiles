@@ -101,7 +101,7 @@ format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
 [python]
 symbol = ""
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green)]($style)'
+format = '[❯](fg:rosewater)[[ $symbol( $version)( \(($virtualenv)\)) ](fg:green)]($style)'
 
 [lua]
 symbol = "🌙 "
