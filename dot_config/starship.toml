@@ -5,13 +5,13 @@ palette = 'catppuccin_mocha'
 
 format = """
 $time\
-[❯ ](fg:rosewater)\
 $os\
 $username\
 $hostname\
-[❯](fg:rosewater)\
 $directory\
 $git_branch\
+$git_commit\
+$git_state\
 $git_status\
 $c\
 $cpp\
@@ -20,12 +20,22 @@ $python\
 $lua\
 $conda\
 $docker_context\
+$cmd_duration
 $line_break\
-$character"""
+$character
+"""
+
+[time]
+disabled = false
+# symbol = "  "
+time_format = "%R"
+style = "fg:mauve"
+format = '[$time]($style)'
 
 [os]
 disabled = false
 style = "fg:maroon"
+format = '[ ❯ ](fg:rosewater)[$symbol ]($style)'
 
 [os.symbols]
 Windows = ""
@@ -52,18 +62,19 @@ RedHatEnterprise = "󱄛"
 show_always = true
 style_user = "fg:maroon"
 style_root = "fg:maroon"
-format = '[ $user]($style)'
+format = '[$user]($style)'
 
 [hostname]
 ssh_only = false
 style = "fg:maroon"
-format = '[@$hostname ]($style)'
+format = '[@$hostname]($style)'
 
 [directory]
 style = "fg:sky"
-format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
+home_symbol = "~"
+format = "[ ❯ ](fg:rosewater)[$path]($style)"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -75,59 +86,74 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "fg:yellow"
-format = '[❯](fg:rosewater)[[ $symbol $branch ](fg:yellow)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol $branch]($style)'
+
+[git_commit]
+style = "fg:yellow"
+commit_hash_length = 7
+tag_symbol = '󰓽 '
+tag_disabled = false
+format = '[ \($hash $tag\)]($style)'
+
+[git_state]
+style = "fg:yellow"
+rebase = '󱓎 REBASING'
+merge = ' MERGING'
+revert = '󰕍 REVERTING'
+cherry_pick = '🍒 PICKING'
+bisect = '󰃻 BISECTING'
+am = '󱡯  AM'
+am_or_rebase = '󱓎 AM/REBASE'
+format = '[\($state($progress_current of $progress_total)\) ]($style)'
 
 [git_status]
 style = "fg:yellow"
-format = '[[($all_status$ahead_behind )](fg:yellow)]($style)'
+format = '[($all_status$ahead_behind) ]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [cpp]
 symbol = " ++"
 disabled = false
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [cmake]
 symbol = "△"
 disabled = false
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [python]
 symbol = ""
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version)( \(($virtualenv)\)) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)( \(($virtualenv)\))]($style)'
 
 [lua]
-symbol = "🌙 "
+symbol = "🌙"
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [docker_context]
 symbol = ""
 style = "fg:sapphire"
-format = '[❯](fg:rosewater)[[ $symbol( $context) ](fg:sapphire)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($context)]($style)'
 
 [conda]
-symbol = "  "
+symbol = " "
 style = "fg:sapphire"
-format = '[❯](fg:rosewater)[$symbol$environment ]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol $environment]($style)'
 ignore_base = false
 
-[time]
+[cmd_duration]
+style = "fg:lavender"
+min_time = 2_000
+show_milliseconds = false
 disabled = false
-# symbol = "  "
-time_format = "%R"
-style = "fg:mauve"
-format = '[[$time ](fg:mauve)]($style)'
-
-[line_break]
-disabled = false
+format = '[ ❯ ](fg:rosewater)[󰔛 in $duration]($style)'
 
 [character]
 disabled = false
@@ -138,13 +164,8 @@ vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
 vimcmd_replace_symbol = '[❮](bold fg:lavender)'
 vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
-[cmd_duration]
-show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
-disabled = false
-show_notifications = true
-min_time_to_notify = 45000
+[line_break]
+disabled = true
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
