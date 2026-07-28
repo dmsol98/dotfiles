@@ -20,9 +20,18 @@ $python\
 $lua\
 $conda\
 $docker_context\
+$cmd_duration
 $line_break\
 $character
 """
+
+[time]
+disabled = false
+# symbol = "  "
+time_format = "%R"
+style = "fg:mauve"
+format = '[$time]($style)'
+
 [os]
 disabled = false
 style = "fg:maroon"
@@ -139,15 +148,12 @@ style = "fg:sapphire"
 format = '[ ❯ ](fg:rosewater)[$symbol $environment]($style)'
 ignore_base = false
 
-[time]
+[cmd_duration]
+style = "fg:lavender"
+min_time = 2_000
+show_milliseconds = false
 disabled = false
-# symbol = "  "
-time_format = "%R"
-style = "fg:mauve"
-format = '[[$time ](fg:mauve)]($style)'
-
-[line_break]
-disabled = false
+format = '[ ❯ ](fg:rosewater)[󰔛 in $duration]($style)'
 
 [character]
 disabled = false
@@ -158,13 +164,8 @@ vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
 vimcmd_replace_symbol = '[❮](bold fg:lavender)'
 vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
-[cmd_duration]
-show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
-disabled = false
-show_notifications = true
-min_time_to_notify = 45000
+[line_break]
+disabled = true
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
