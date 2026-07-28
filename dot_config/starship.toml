@@ -5,11 +5,9 @@ palette = 'catppuccin_mocha'
 
 format = """
 $time\
-[❯ ](fg:rosewater)\
 $os\
 $username\
 $hostname\
-[❯](fg:rosewater)\
 $directory\
 $git_branch\
 $git_status\
@@ -21,11 +19,12 @@ $lua\
 $conda\
 $docker_context\
 $line_break\
-$character"""
-
+$character
+"""
 [os]
 disabled = false
 style = "fg:maroon"
+format = '[ ❯ ](fg:rosewater)[$symbol ]($style)'
 
 [os.symbols]
 Windows = ""
@@ -52,18 +51,19 @@ RedHatEnterprise = "󱄛"
 show_always = true
 style_user = "fg:maroon"
 style_root = "fg:maroon"
-format = '[ $user]($style)'
+format = '[$user]($style)'
 
 [hostname]
 ssh_only = false
 style = "fg:maroon"
-format = '[@$hostname ]($style)'
+format = '[@$hostname]($style)'
 
 [directory]
 style = "fg:sky"
-format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
+home_symbol = "~"
+format = "[ ❯ ](fg:rosewater)[$path]($style)"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -75,48 +75,48 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "fg:yellow"
-format = '[❯](fg:rosewater)[[ $symbol $branch ](fg:yellow)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol $branch]($style)'
 
 [git_status]
 style = "fg:yellow"
-format = '[[($all_status$ahead_behind )](fg:yellow)]($style)'
+format = '[($all_status$ahead_behind) ]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [cpp]
 symbol = " ++"
 disabled = false
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [cmake]
 symbol = "△"
 disabled = false
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [python]
 symbol = ""
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version)(\(#$virtualenv\)) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)(\(#$virtualenv\))]($style)'
 
 [lua]
-symbol = "🌙 "
+symbol = "🌙"
 style = "fg:green"
-format = '[❯](fg:rosewater)[[ $symbol( $version) ](fg:green)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($version)]($style)'
 
 [docker_context]
 symbol = ""
 style = "fg:sapphire"
-format = '[❯](fg:rosewater)[[ $symbol( $context) ](fg:sapphire)]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol ($context)]($style)'
 
 [conda]
-symbol = "  "
+symbol = " "
 style = "fg:sapphire"
-format = '[❯](fg:rosewater)[$symbol$environment ]($style)'
+format = '[ ❯ ](fg:rosewater)[$symbol $environment]($style)'
 ignore_base = false
 
 [time]
