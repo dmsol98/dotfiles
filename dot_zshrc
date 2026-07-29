@@ -96,6 +96,11 @@ eval "$(fzf --zsh)"
 # USER SPECIFIC ALIASES AND FUNCTIONS
 # --------------------------------------------------------------------------------
 
+# Use eza if it is installed
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+fi
+
 # Terminal navigation
 alias la="ls -lah --color=auto --group-directories-first --sort=extension"
 alias path="echo \"$PATH\" | tr ':' '\n'"
