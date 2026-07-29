@@ -91,24 +91,37 @@ format = '[ ❯ ](fg:rosewater)[$symbol $branch]($style)'
 [git_commit]
 style = "fg:yellow"
 commit_hash_length = 7
-tag_symbol = '󰓽 '
+tag_symbol = "󰓽 "
 tag_disabled = false
-format = '[ \($hash $tag\)]($style)'
+format = '[ \( $hash $tag\)]($style)'
 
 [git_state]
 style = "fg:yellow"
-rebase = '󱓎 REBASING'
-merge = ' MERGING'
-revert = '󰕍 REVERTING'
-cherry_pick = '🍒 PICKING'
-bisect = '󰃻 BISECTING'
-am = '󱡯  AM'
-am_or_rebase = '󱓎 AM/REBASE'
-format = '[\($state($progress_current of $progress_total)\) ]($style)'
+rebase = "󱓎 REBASING"
+merge = " MERGING"
+revert = "󰕍 REVERTING"
+cherry_pick = "🍒 PICKING"
+bisect = " BISECTING"
+am = "󱡯  AM"
+am_or_rebase = "󱓎 AM/REBASE"
+format = '[ \($state($progress_current of $progress_total)\)]($style)'
 
 [git_status]
 style = "fg:yellow"
-format = '[($all_status$ahead_behind) ]($style)'
+conflicted = " "
+ahead = "󰶣" # "󰑮 "
+behind = "󰶡" # "󱙷 "
+diverged = "󰃻"
+up_to_date = " "
+untracked = " "
+stashed = " "
+modified = "󱇨 "
+staged = " " # " "
+renamed = "󱓦 "
+deleted = " "
+typechanged = " "
+disabled = false
+format = '[ ($all_status$ahead_behind)]($style)'
 
 [c]
 symbol = ""
