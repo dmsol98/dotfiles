@@ -35,18 +35,6 @@ config.default_prog = {
   "-NoLogo",
 }
 
--- Event: toggle opacity
-wezterm.on("toggle-opacity", function(window, pane)
-  local overrides = window:get_config_overrides() or {}
-  if not overrides.window_background_opacity then
-    overrides.window_background_opacity = 0.85
-  else
-    overrides.window_background_opacity = nil
-  end
-  print(overrides.window_background_opacity)
-  window:set_config_overrides(overrides)
-end)
-
 -- Custom keymaps
 config.keys = {
 
@@ -73,14 +61,60 @@ config.keys = {
       },
     }),
   },
-
-  -- Toggle opacity
-  {
-    key = "O",
-    mods = "CTRL|SHIFT",
-    action = wezterm.action.EmitEvent("toggle-opacity"),
-  },
 }
+-- =============================== TOGGLE OPACITY ==============================
+
+-- Event: toggle opacity
+wezterm.on("toggle-opacity", function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.window_background_opacity then
+    overrides.window_background_opacity = 0.85
+  else
+    overrides.window_background_opacity = nil
+  end
+  print(overrides.window_background_opacity)
+  window:set_config_overrides(overrides)
+end)
+
+-- Bind keymap to toggle opacity
+table.insert(config.keys, {
+  key = "o",
+  mods = "CTRL|SHIFT",
+  action = act.EmitEvent("toggle-opacity"),
+})
+
+-- =============================== THEME PICKER ================================
+
+-- Build a fuzzy-searchable list of built-in scheme names once at config load
+local scheme_names = {}
+for name, _ in pairs(wezterm.color.get_builtin_schemes()) do
+  table.insert(scheme_names, name)
+end
+table.sort(scheme_names) -- alphabetical order for the unfiltered list
+
+local scheme_choices = {}
+for _, name in ipairs(scheme_names) do
+  table.insert(scheme_choices, { label = name, id = name })
+end
+
+-- Bind keymap
+table.insert(config.keys, {
+  key = "t",
+  mods = "CTRL|SHIFT",
+  action = act.InputSelector({
+    title = "Select color scheme",
+    choices = scheme_choices,
+    fuzzy = true,
+    action = wezterm.action_callback(function(window, _pane, id, _label)
+      if not id then
+        return -- user cancelled (Esc)
+      end
+      local overrides = window:get_config_overrides() or {}
+      overrides.color_scheme = id
+      window:set_config_overrides(overrides)
+    end),
+  }),
+})
 
 -- ==================================== END ====================================
 
