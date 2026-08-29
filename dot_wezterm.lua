@@ -2,6 +2,7 @@
 
 -- Using wezterm API
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 -- Initialize config list
 local config = {}
@@ -17,11 +18,11 @@ config.font = wezterm.font_with_fallback({
 -- Color scheme
 config.color_scheme = "catppuccin-mocha"
 
--- Tab bar
-config.hide_tab_bar_if_only_one_tab = true
-
 -- Window opacity
 config.window_background_opacity = 1
+
+-- Tab bar
+config.hide_tab_bar_if_only_one_tab = true
 
 -- Font increase/decrease does not impact window size
 config.adjust_window_size_when_changing_font_size = false
@@ -53,7 +54,7 @@ config.keys = {
   {
     key = "b",
     mods = "CTRL|SHIFT",
-    action = wezterm.action.SpawnCommandInNewTab({
+    action = act.SpawnCommandInNewTab({
       args = {
         "C:\\Program Files\\Git\\bin\\bash.exe",
         "-l",
@@ -65,7 +66,7 @@ config.keys = {
   {
     key = "w",
     mods = "CTRL|SHIFT",
-    action = wezterm.action.SpawnCommandInNewTab({
+    action = act.SpawnCommandInNewTab({
       args = {
         "wsl",
         "~",
