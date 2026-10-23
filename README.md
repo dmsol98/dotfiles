@@ -53,7 +53,7 @@ chezmoi apply
 
 # Zsh
 
-Once zsh has been installed and is on the system path, make it the default shell.
+Once zsh has been installed and is on the system path, make it the default shell. You may need to reboot your system to implement these changes.
 
 ```bash
 echo /home/linuxbrew/.linuxbrew/bin/zsh | sudo tee -a /etc/shells
