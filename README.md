@@ -19,7 +19,7 @@ Chezmoi is a dotfile manager that works with GitHub (or other version control sy
 Clone dotfiles from GitHub into the source directory, then update the the dotfiles on your home directory (local machine).
 
 ```bash
-chezmoi init --apply https://github.com/diegosol127/dotfiles
+chezmoi init --apply git@github.com/diegosol127/dotfiles.git
 ```
 
 Add a file to the source repository. If it already exists, the source state is replaced with the current state of the file in the home (destination) directory.
@@ -53,7 +53,7 @@ chezmoi apply
 
 # Zsh
 
-Once zsh has been installed and is on the system path, make it the default shell.
+Once zsh has been installed and is on the system path, make it the default shell. You may need to reboot your system to implement these changes.
 
 ```bash
 echo /home/linuxbrew/.linuxbrew/bin/zsh | sudo tee -a /etc/shells
