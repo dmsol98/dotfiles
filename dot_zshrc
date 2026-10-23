@@ -14,15 +14,22 @@ if ! [[ ":$PATH:" == *":/home/linuxbrew/.linuxbrew/bin:"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-if ! [[ ":$PATH:" == *":$HOME/.local/bin:"* ]]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-export PATH
+# Add custom paths to PATH
+CUSTOMPATHS=(
+  "$HOME/.local/bin"
+  "$HOME/cask/launchers"
+)
+for dir in "${CUSTOMPATHS[@]}"; do
+  if ! [[ ":$PATH:" == *":$dir:"* ]]; then
+      PATH="$dir:$PATH"
+  fi
+done
 
 # If $PATH contains duplicate paths, remove them with this line of code
 export PATH=$(echo "$PATH" | tr ':' '\n' | awk '!seen[$0]++' | paste -sd:)
 
+# Export PATH
+export PATH
 
 # --------------------------------------------------------------------------------
 # EXPORT CUSTOM VARIABLES
